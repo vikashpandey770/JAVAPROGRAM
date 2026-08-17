@@ -11,4 +11,28 @@
 		<welcome-file>default.jsp</welcome-file>
 		<welcome-file>default.xhtml</welcome-file>
 	</welcome-file-list>
+	
+	
+	<context-param>
+	<param-name>driver</param-name>
+	<param-value>com.mysql.jdbc.Driver</param-value>
+	</context-param>
+	
+	<servlet>
+	<servlet-name>MyServlet1</servlet-name>
+	<servlet-class>com.servlet.MyServlet1</servlet-class>
+	
+	<init-param>
+	
+	<param-name>email</param-name>
+	<param-value>tops@gmail.com</param-value>
+	
+	</init-param>
+		</servlet>
+	
+	<servlet-mapping>
+	<servlet-name>MyServlet1</servlet-name>
+	<url-pattern>/com.servlet.MyServlet1</url-pattern>
+	</servlet-mapping>
+	
 </web-app>

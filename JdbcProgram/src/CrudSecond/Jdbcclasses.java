@@ -12,7 +12,7 @@ public class Jdbcclasses {
 		Connection conn=null;	
 		try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-	 conn=	DriverManager.getConnection("jdbc:mysql://localhost:3306/topscruone","root","");	
+	 conn=	DriverManager.getConnection("jdbc:mysql://localhost:3306/firstjdbcprogram","root","");	
 	
 	System.out.println("success driver manager");
 		
@@ -67,18 +67,17 @@ public class Jdbcclasses {
 			String sql="insert into form(fname,lname,email,address,city,state,mobile,pincode,date,course,branch)values (?,?,?,?,?,?,?,?,?,?,?)"; 
 		PreparedStatement pst=conn.prepareStatement(sql);
 		
-		pst.setString(1,f.getFname());
-		pst.setString(2,f.getLname());
-		pst.setString(3,f.getAddress());
-		pst.setString(4,f.getCity());
-		pst.setString(5, f.getCourse());
-		pst.setString(6,f.getBranch());
-		pst.setString(7,f.getEmail());
-		pst.setString(8,f.getState());
-		pst.setLong(9,f.getMobile());
-		pst.setInt(10,f.getPincode());
-		pst.setInt(11,f.getDate());
-		
+		pst.setString(1, f.getFname());
+		pst.setString(2, f.getLname());
+		pst.setString(3, f.getEmail());
+		pst.setString(4, f.getAddress());
+		pst.setString(5, f.getCity());
+		pst.setString(6, f.getState());
+		pst.setLong(7, f.getMobile());
+		pst.setInt(8, f.getPincode());
+		pst.setInt(9, f.getDate());
+		pst.setString(10, f.getCourse());
+		pst.setString(11, f.getBranch());
 		
 		int result=pst.executeUpdate();
 		
@@ -88,6 +87,12 @@ public class Jdbcclasses {
 		pst.close();
 		conn.close();
 		
+		
+		
+		
+		
+		
+		
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -96,6 +101,8 @@ public class Jdbcclasses {
 		
 	public static void main(String[] args) {			
 		Jdbcclasses jc=new Jdbcclasses();
+		jc.createConnection();
 		jc.insert();
+		
 	}
 }
