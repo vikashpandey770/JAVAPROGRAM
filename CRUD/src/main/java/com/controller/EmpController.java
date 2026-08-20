@@ -17,8 +17,6 @@ public class EmpController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	String action=request.getParameter("action");
 	
-	System.out.println("action : "+action);
-	
 	if(action.equalsIgnoreCase("insert")) {
 		
 		Emp e=new Emp();
@@ -28,21 +26,43 @@ public class EmpController extends HttpServlet {
 		e.setDept(request.getParameter("dept"));
 		e.setSalary(Double.parseDouble(request.getParameter("salary")));
 		
-		
-		 System.out.println("Name = " + e.getEname());
-	        System.out.println("Email = " + e.getEmail());
-	        System.out.println("Job = " + e.getJob());
-	        System.out.println("Dept = " + e.getDept());
-	        System.out.println("Salary = " + e.getSalary());
-
-	        
-	        
 		EmpDao.insertEmp(e);
 		response.sendRedirect("show.jsp");
 		
+
+	}
+	else if(action.equalsIgnoreCase("edit")) {
 		
+		int eid=Integer.parseInt(request.getParameter("eid"));
+		Emp e=EmpDao.getEmployee(eid);
+		request.setAttribute("e", e);
+		request.getRequestDispatcher("update.jsp").forward(request, response);;	
+	}
+	
+	else if(action.equalsIgnoreCase("update")) {
+		
+		Emp e=new Emp();
+		e.setEid(Integer.parseInt(request.getParameter("eid")));
+		e.setEname(request.getParameter("Ename"));
+		e.setEmail(request.getParameter("email"));
+		e.setJob(request.getParameter("job"));
+		e.setDept(request.getParameter("dept"));
+		e.setSalary(Double.parseDouble(request.getParameter("salary")));
+		
+		EmpDao.update(e);
+		response.sendRedirect("show.jsp");
+	}
+	
+	else if(action.equalsIgnoreCase("delete")) {
+		int eid=Integer.parseInt(request.getParameter("eid"));
+
+		EmpDao.delete(eid);
+		response.sendRedirect("show.jsp");
 		
 	}
+	
+	
+	
 	}
 
 }

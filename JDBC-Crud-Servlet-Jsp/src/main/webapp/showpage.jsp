@@ -58,13 +58,14 @@ for(Student s:list){
 	<td><%=s.getPassword() %> </td>
 	<td><%=s.getAddress() %></td>
 	<td><%=s.getQualification()%></td>
+	
 	<td>
-    <a href="delete?studentid=<%=s.getStudentid()%>"
-       onclick="return confirm('Are you sure you want to delete this Student ?');">
-        Delete
-    </a>
-</td>
-
+	<form name="update" method="post" value="StudentController">
+	<input type="hidden" name ="studentid" value="<%=s.getStudentId() %>" >
+	<input type="submit" name="action" value="delete">
+	</form>
+	</td>
+	
 
 <td>
     <a href="update?studentid=<%=s.getStudentid()%>"
