@@ -37,7 +37,6 @@ public class EmpDao {
 	
 	
 	
-	
 	public static List<Emp> getallEmployee(){
 		
 		List<Emp> list=new ArrayList<Emp>();
@@ -59,10 +58,8 @@ public class EmpDao {
 			e.setSalary(rs.getDouble("salary"));
 			
 			list.add(e);
-			
-			
+				
 		}
-		
 		
 	} catch (Exception e) {
 		// TODO: handle exception
