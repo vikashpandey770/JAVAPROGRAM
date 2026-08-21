@@ -12,7 +12,6 @@ import com.dao.EmpDao;
 @WebServlet("/EmpController")
 public class EmpController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	String action=request.getParameter("action");
@@ -29,7 +28,6 @@ public class EmpController extends HttpServlet {
 		EmpDao.insertEmp(e);
 		response.sendRedirect("show.jsp");
 		
-
 	}
 	else if(action.equalsIgnoreCase("edit")) {
 		
@@ -52,17 +50,13 @@ public class EmpController extends HttpServlet {
 		EmpDao.update(e);
 		response.sendRedirect("show.jsp");
 	}
-	
 	else if(action.equalsIgnoreCase("delete")) {
 		int eid=Integer.parseInt(request.getParameter("eid"));
 
 		EmpDao.delete(eid);
 		response.sendRedirect("show.jsp");
 		
-	}
-	
-	
-	
+	}	
 	}
 
 }

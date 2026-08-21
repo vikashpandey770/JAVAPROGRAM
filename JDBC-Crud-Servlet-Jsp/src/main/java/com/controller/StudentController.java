@@ -28,7 +28,20 @@ public class StudentController extends HttpServlet {
 			s.setQualification(request.getParameter("qualification"));
 			
 			StudentDao.insert(s);
-			response.sendRedirect("showpage.jsp");
+			response.sendRedirect("showpage.jsp");	
+		}
+		
+		else if(action.equalsIgnoreCase("edit")) {
+			int Studentid =Integer.parseInt(request.getParameter("studentid"));
+			
+			Student s=StudentDao.EditStudent(Studentid);
+			request.setAttribute("s", s);
+			request.getRequestDispatcher("updates.jsp").forward(request, response);
+			
+			
+			
+			
+			
 			
 			
 		}

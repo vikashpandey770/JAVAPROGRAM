@@ -98,10 +98,40 @@ e.printStackTrace();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		return list;	
+	}
+	
+	
+	
+	public static Student EditStudent(int Studentid){
+
+		Student  s=null;
 		
-		return list;
-		
-		
+		try {
+			Connection conn=StudentUtil.createConnection();
+			String sql="select * from students where studentid=?";
+			PreparedStatement pst=conn.prepareStatement(sql);
+			pst.setInt(1, Studentid);
+			
+			
+			ResultSet rs=pst.executeQuery();
+			while(rs.next()) {
+				 s=new Student();
+				s.setStudentid(rs.getInt("studentid"));
+				s.setName(rs.getString("name"));
+				s.setEmail(rs.getString("email"));
+				s.setContact(rs.getDouble("contact"));
+				s.setPassword(rs.getString("password"));
+				s.setAddress(rs.getString("address"));
+				s.setQualification(rs.getString("qualification"));
+
+			
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return s;	
 	}
 	
 	

@@ -6,6 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -13,7 +16,7 @@
 <style>
 table {
     border-collapse: collapse;
-    width: 80%;
+    width: 100%;
 }
 
 th, td {
@@ -38,11 +41,9 @@ th {
 	<th>Student password</th>
 	<th>Student address</th>
 	<th>Student qualification</th>
-	<th>Action</th>
-	<th>Action</th>
+	<th>EDIT</th>
+	<th>DELETE</th>
 	
-	
-
 </tr>
 
 <%
@@ -58,23 +59,20 @@ for(Student s:list){
 	<td><%=s.getPassword() %> </td>
 	<td><%=s.getAddress() %></td>
 	<td><%=s.getQualification()%></td>
-	
 	<td>
-	<form name="update" method="post" value="StudentController">
-	<input type="hidden" name ="studentid" value="<%=s.getStudentId() %>" >
-	<input type="submit" name="action" value="delete">
+	<form name="edit" method="post" action="StudentController">
+	<input type="hidden" name="studentid" value="<%=s.getStudentid() %>">
+	<input type="submit" name="action" value="EDIT" class="btn btn-primary">
 	</form>
 	</td>
-	
 
-<td>
-    <a href="update?studentid=<%=s.getStudentid()%>"
-       onclick="return confirm('Are you sure you want to delete this Student ?');">
-        update
-    </a>
+
+	<td>
+	<form name="delete" method="post" action="StudentController">
+	<input type="hidden" name="studentid" value="<%=s.getStudentid() %>">
+	<input type="submit" name="action" value="DELETE" class="btn btn-danger">
+	</form>
 </td>
-		
-	</tr>
 	
 <%	
 }

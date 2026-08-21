@@ -32,7 +32,7 @@ padding: 10px;
 
 <tr>
 <td>contact</td>
-<td><input type="int" name="contact"></td>
+<td><input type="text" name="contact"></td>
 </tr>
 
 
